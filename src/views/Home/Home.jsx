@@ -2,11 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchPokemon } from '../../services/fetch';
 import PokeCard from '../../components/PokeCard/PokeCard';
-import './Home.css';
+import styles from './Home.css';
 
 export default function Home() {
   const [pokemon, setPokemon] = useState([]);
   const [error, setError] = useState('');
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -28,10 +29,21 @@ export default function Home() {
       </>
     );
   }
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <>
       <h1>Pokemon Compendium</h1>
-      <div className="list-container">
+      <input
+        type={'text'}
+        value={search}
+        placeholder={'Search'}
+        onChange={handleChange}
+      />
+      <div className={styles['list-container']}>
         {pokemon.map((item) => (
           <PokeCard key={item.id} {...item} />
         ))}
