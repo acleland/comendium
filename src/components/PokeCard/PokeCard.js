@@ -1,0 +1,33 @@
+import React from 'react';
+import styles from './PokeCard.css';
+
+export default function PokeCard(pokemon) {
+  const typeString =
+    pokemon.type_1 + (pokemon.type_2 !== 'NA' ? `, ${pokemon.type_2}` : '');
+  return (
+    <div className={styles['poke-card']}>
+      <p className="poke-name">{pokemon.pokemon}</p>
+      <img src={pokemon.url_image} />
+      <table>
+        <tbody>
+          <tr>
+            <th>type:</th>
+            <td>{typeString}</td>
+          </tr>
+          <tr>
+            <th>attack:</th>
+            <td>{pokemon.attack}</td>
+          </tr>
+          <tr>
+            <th>defense:</th>
+            <td>{pokemon.defense}</td>
+          </tr>
+          <tr>
+            <th>hp:</th>
+            <td>{pokemon.hp}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
