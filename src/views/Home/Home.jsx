@@ -51,9 +51,13 @@ export default function Home() {
           />
 
           <div className={styles['list-container']}>
-            {pokemon.map((item) => (
-              <PokeCard key={item.id} {...item} />
-            ))}
+            {pokemon
+              .filter((pokemon) =>
+                pokemon.pokemon.toLowerCase().startsWith(search.trim())
+              )
+              .map((item) => (
+                <PokeCard key={item.id} {...item} />
+              ))}
           </div>
         </>
       )}
