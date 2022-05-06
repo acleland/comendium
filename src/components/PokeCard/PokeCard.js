@@ -1,11 +1,11 @@
 import React from 'react';
-import './PokeCard.css';
+import styles from './PokeCard.css';
 
 export default function PokeCard(pokemon) {
   const typeString =
     pokemon.type_1 + (pokemon.type_2 !== 'NA' ? `, ${pokemon.type_2}` : '');
   return (
-    <div className="poke-card">
+    <div className={styles['poke-card']}>
       <p className="poke-name">{pokemon.pokemon}</p>
       <img src={pokemon.url_image} />
       <table>
